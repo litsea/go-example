@@ -1,0 +1,20 @@
+# App Config
+# Default: config/const.go#setDefault()
+
+server:
+  pprof-token: "<change me>"
+
+# github.com/litsea/log-slog
+log:
+  handlers:
+    - console
+    - sentry
+  console:
+    handler: text
+    output: stdout
+    level: debug
+  sentry:
+    handler: sentry
+    dsn: ""
+    env: local
+    debug: true

@@ -1,0 +1,31 @@
+# App Config
+# Key: config/const.go
+# Default: config/config.go#setDefault()
+
+server:
+  pprof-addr: "0.0.0.0:6060"
+  pprof-token: "<change me>"
+
+# github.com/litsea/log-slog
+log:
+  handlers:
+    - console
+    - file
+    - sentry
+  console:
+    handler: text
+    output: stdout
+    level: debug
+  file:
+    handler: json
+    output: file
+    filename: tmp/log/app.log
+    level: info
+    max-days: 5
+    max-mbs: 10
+    max-backups: 5
+  sentry:
+    handler: sentry
+    dsn: ""
+    env: local
+    debug: true
