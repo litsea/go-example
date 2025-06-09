@@ -3,7 +3,7 @@ module github.com/litsea/go-example
 go 1.24.0
 
 require (
-	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.35.4
+	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.35.5
 	github.com/fsnotify/fsnotify v1.9.0
 	github.com/litsea/kit v0.1.0
 	github.com/litsea/log-slog v0.2.4
