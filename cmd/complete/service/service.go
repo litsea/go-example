@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/litsea/kit/graceful"
+	"github.com/litsea/kit/profiler"
 	log "github.com/litsea/log-slog"
 	"github.com/spf13/viper"
 
@@ -16,6 +17,23 @@ type demoService struct {
 }
 
 func New(v *viper.Viper) {
+	// Enable the profiler only when the server address provided
+	if v.GetString(config.KeyProfilerServerAddress) != "" {
+		_, err := profiler.Start(
+			// appName.serviceName.env
+			"go-example.complete."+v.GetString(config.KeyEnv),
+			v.GetString(config.KeyProfilerServerAddress),
+			profiler.WithAuth(
+				v.GetString(config.KeyProfilerAuthUsername),
+				v.GetString(config.KeyProfilerAuthPassword),
+			),
+			profiler.WithDebug(v.GetBool(config.KeyProfilerDebug)),
+		)
+		if err != nil {
+			log.Error("service.New: failed to start profiler", "err", err)
+		}
+	}
+
 	demo1 := &demoService{
 		stop: make(chan struct{}),
 	}

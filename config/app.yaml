@@ -1,6 +1,8 @@
 # App Config
 # Default: config/const.go#setDefault()
 
+env: local
+
 server:
   pprof-token: "<change me>"
 
@@ -17,4 +19,4 @@ log:
     handler: sentry
     dsn: ""
     env: local
-    debug: true
+    debug: false
