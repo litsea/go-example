@@ -67,13 +67,13 @@ func (s *demoService) Start(ctx context.Context) error {
 	for {
 		select {
 		case <-ctx.Done():
-			log.Info("service.Start: context cancelled", "name", s.Name())
+			log.Info("service.Start: context cancelled", "service", s.Name())
 			return nil
 		case <-s.stop:
-			log.Info("service.Start: stop signal received", "name", s.Name())
+			log.Info("service.Start: stop signal received", "service", s.Name())
 			return nil
 		default:
-			log.Info("service.Start: loop", "name", s.Name())
+			log.Info("service.Start: loop", "service", s.Name())
 			time.Sleep(2 * time.Second)
 		}
 	}
@@ -82,24 +82,9 @@ func (s *demoService) Start(ctx context.Context) error {
 func (s *demoService) Stop(ctx context.Context) error {
 	close(s.stop)
 
-	interval := 100 * time.Millisecond
-	timer := time.NewTimer(interval)
-	defer timer.Stop()
+	log.Info("service.Stop: service shutdown, cleaning in progress", "service", s.Name())
+	time.Sleep(time.Second * 5)
+	log.Info("service.Stop: service cleanup completed", "service", s.Name())
 
-	cleanCh := make(chan struct{})
-	go func() {
-		time.Sleep(time.Second * 3)
-		close(cleanCh)
-	}()
-
-	for {
-		select {
-		case <-ctx.Done():
-			return ctx.Err()
-		case <-cleanCh:
-			log.Info("service.Stop: cleanup done", "name", s.Name())
-			timer.Reset(interval)
-			return nil
-		}
-	}
+	return nil
 }
