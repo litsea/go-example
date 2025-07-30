@@ -5,7 +5,7 @@
 env: local
 
 server:
-  pprof-addr: "0.0.0.0:6060"
+  addr: "0.0.0.0:8081"
   pprof-token: "<change me>"
   stop-timeout: 15s
 
@@ -38,3 +38,8 @@ profiler:
   auth-username: ""
   auth-password: ""
   debug: false
+
+metrics:
+  enable: false
+  username: ""
+  password: ""

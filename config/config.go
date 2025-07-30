@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log/slog"
 	"os"
+	"strings"
 
 	log "github.com/litsea/log-slog"
 	vp "github.com/litsea/viper-aws"
@@ -28,6 +29,7 @@ func Init(cfgFile, cfgType string) {
 	l := slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{}))
 	v := viper.NewWithOptions(viper.WithLogger(l))
 	v.SetEnvPrefix("GO_EXP")
+	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_", "-", "_"))
 	v.AutomaticEnv()
 	sid := os.Getenv("CONFIG_AWS_SECRET_ID")
 
