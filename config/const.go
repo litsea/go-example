@@ -5,7 +5,7 @@ const (
 
 	// server
 
-	KeyPprofAddr   = "server.pprof-addr"
+	KeyServerAddr  = "server.addr"
 	KeyPprofToken  = "server.pprof-token" //nolint:gosec
 	KeyStopTimeout = "server.stop-timeout"
 
@@ -15,6 +15,12 @@ const (
 	KeyProfilerAuthUsername  = "profiler.auth-username"
 	KeyProfilerAuthPassword  = "profiler.auth-password" //nolint:gosec
 	KeyProfilerDebug         = "profiler.debug"
+
+	// metrics
+
+	KeyMetricsEnable   = "metrics.enable"
+	KeyMetricsUsername = "metrics.username"
+	KeyMetricsPassword = "metrics.password"
 
 	// log
 

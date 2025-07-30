@@ -11,7 +11,7 @@ import (
 )
 
 func setDefault(v *viper.Viper) {
-	v.SetDefault(KeyPprofAddr, "0.0.0.0:8080")
+	v.SetDefault(KeyServerAddr, "0.0.0.0:8080")
 	v.SetDefault(KeyStopTimeout, 30*time.Second)
 }
 
