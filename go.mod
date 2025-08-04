@@ -8,7 +8,7 @@ require (
 	github.com/litsea/kit v0.1.2
 	github.com/litsea/log-slog v0.2.5
 	github.com/litsea/viper-aws v0.2.1
-	github.com/prometheus/client_golang v1.22.0
+	github.com/prometheus/client_golang v1.23.0
 	github.com/spf13/cobra v1.9.1
 	github.com/spf13/viper v1.20.1
 )
