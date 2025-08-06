@@ -5,7 +5,7 @@ go 1.24.0
 require (
 	github.com/aws/aws-sdk-go-v2/service/secretsmanager v1.36.0
 	github.com/fsnotify/fsnotify v1.9.0
-	github.com/litsea/kit v0.1.2
+	github.com/litsea/kit v0.1.3
 	github.com/litsea/log-slog v0.2.5
 	github.com/litsea/viper-aws v0.2.1
 	github.com/prometheus/client_golang v1.23.0
